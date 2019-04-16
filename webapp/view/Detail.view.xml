@@ -1,0 +1,55 @@
+<mvc:View controllerName="ate.activity.book.ATE.controller.Detail" xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc">
+	<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" showFooter="true" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="{Name}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectAttribute title="{i18n>priceTitle}"/>
+		</semantic:headerContent>
+		<semantic:content>
+			<Table noDataText="Drop column list items here and columns in the area above" items="{/EmployeeSet}" id="table0" growing="true"
+				mode="SingleSelectLeft">
+				<items>
+					<ColumnListItem type="Active" id="item0">
+						<cells>
+							<Text text="{Empid}" id="text0_1553772650518"/>
+							<Text text="{FirstName}" id="text1"/>
+							<Text text="{LastName}" id="text2"/></cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column id="column1">
+						<header>
+							<Label text="First Name" id="label1"/>
+						</header>
+					</Column>
+					<Column id="column2">
+						<header>
+							<Label text="Last Name" id="label2"/>
+						</header>
+					</Column>
+				</columns>
+			</Table>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onSendEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:footerCustomActions>
+			<Button id="entityEdit" text="Edit" press="onEdit"/>
+			<Button id="entityEdit1" text="delta" press="ondelta"/>
+			<Button id="entityDelete" text="Delete" press="onDelete"/>
+		</semantic:footerCustomActions>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+	</semantic:SemanticPage>
+</mvc:View>
